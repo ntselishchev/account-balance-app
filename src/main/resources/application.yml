@@ -1,0 +1,12 @@
+server:
+  port: ${APP_PORT:8089}
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:template}?prepareThreshold=0
+    username: ${DB_USR:postgres}
+    password: ${DB_PWD:postgres}
+    hikari:
+      maximum-pool-size: ${DB_POOL_SIZE:20}
+  liquibase:
+    change-log: classpath:db/liquibase-changelog.xml
