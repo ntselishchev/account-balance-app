@@ -5,9 +5,7 @@ import com.paysend.testaccountbalanceapp.model.ServiceRequest;
 import com.paysend.testaccountbalanceapp.model.ServiceResponse;
 import com.paysend.testaccountbalanceapp.service.PaysendOperationService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -18,7 +16,7 @@ public class PaysendController {
     private final List<PaysendOperationService> services;
 
     @PostMapping(consumes = "application/xml;charset=UTF-8")
-    public ServiceResponse process(@AuthenticationPrincipal @RequestBody ServiceRequest request) {
+    public ServiceResponse process(ServiceRequest request) {
         return findByRequestType(request).process(request);
     }
 
